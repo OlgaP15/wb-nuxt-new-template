@@ -7,4 +7,13 @@ export default defineNuxtConfig({
     '~/assets/css/swiper-bundle.min.css',
     '~/assets/css/style.css'
   ],
+  app: {
+    head: {
+      link: [
+        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Lato:wght@400;900&display=swap' },
+        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap' }
+      
+      ],
+    },
+  },
 })
