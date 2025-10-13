@@ -14,34 +14,14 @@
       <div class="col-lg-6 d-none d-lg-block">
         <nav>
           <ul class="navigation d-flex justify-content-around">
-            <li class="navigation-item">
-              <NuxtLink
-                to="/products"
+            <li class="navigation-item" v-for="link in links" :key="link.id">
+              <NuxtLink 
+                :to="link.route" 
                 class="navigation-link"
-                data-field="gender"
-                >Womens</NuxtLink
+                exact-active-class="navigation-link--active"
               >
-            </li>
-            <li class="navigation-item">
-              <a href="#" class="navigation-link" data-field="gender">Mens</a>
-            </li>
-            <li class="navigation-item">
-              <a href="#" class="navigation-link" data-field="category"
-                >Clothing</a
-              >
-            </li>
-            <li class="navigation-item">
-              <a href="#" class="navigation-link" data-field="category"
-                >Accessories</a
-              >
-            </li>
-            <li class="navigation-item">
-              <a href="#" class="navigation-link" data-field="category"
-                >Shoes</a
-              >
-            </li>
-            <li class="navigation-item">
-              <a href="#" class="navigation-link">All</a>
+                {{ link.text }}
+              </NuxtLink>
             </li>
           </ul>
         </nav>
@@ -52,13 +32,11 @@
             type="text"
             class="form-control"
             placeholder="Search"
-            aria-label="Recipient's username"
-            aria-describedby="button-addon2"
+            aria-label="Search"
           />
           <button
             class="btn btn-outline-secondary"
             type="button"
-            id="button-addon2"
           >
             <img src="/images/search.png" alt="search" />
           </button>
@@ -74,3 +52,38 @@
     </div>
   </header>
 </template>
+
+<script setup>
+const links = [
+  {
+    id: 0,
+    route: "/products?field=gender&name=Womens",
+    text: "Womens",
+  },
+  {
+    id: 1,
+    route: "/products?field=gender&name=Mens",
+    text: "Mens",
+  },
+  {
+    id: 2,
+    route: "/products?field=category&name=Clothing",
+    text: "Clothing",
+  },
+  {
+    id: 3,
+    route: "/products?field=category&name=Accessories",
+    text: "Accessories",
+  },
+  {
+    id: 4,
+    route: "/products?field=category&name=Shoes",
+    text: "Shoes",
+  },
+  {
+    id: 5,
+    route: "/products?field=gender&name=All",
+    text: "All",
+  },
+];
+</script>
