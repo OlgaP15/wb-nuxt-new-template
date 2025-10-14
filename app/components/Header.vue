@@ -15,11 +15,7 @@
         <nav>
           <ul class="navigation d-flex justify-content-around">
             <li class="navigation-item" v-for="link in links" :key="link.id">
-              <NuxtLink 
-                :to="link.route" 
-                class="navigation-link"
-                exact-active-class="navigation-link--active"
-              >
+              <NuxtLink :to="link.route" class="navigation-link">
                 {{ link.text }}
               </NuxtLink>
             </li>
@@ -27,16 +23,18 @@
         </nav>
       </div>
       <div class="col-lg-2 d-none d-lg-block">
-        <div class="form-control search-block">
+        <div class="form-control">
           <input
             type="text"
             class="form-control"
             placeholder="Search"
-            aria-label="Search"
+            aria-label="Recipient's username"
+            aria-describedby="button-addon2"
           />
           <button
             class="btn btn-outline-secondary"
             type="button"
+            id="button-addon2"
           >
             <img src="/images/search.png" alt="search" />
           </button>
@@ -54,36 +52,12 @@
 </template>
 
 <script setup>
-const links = [
-  {
-    id: 0,
-    route: "/products?field=gender&name=Womens",
-    text: "Womens",
-  },
-  {
-    id: 1,
-    route: "/products?field=gender&name=Mens",
-    text: "Mens",
-  },
-  {
-    id: 2,
-    route: "/products?field=category&name=Clothing",
-    text: "Clothing",
-  },
-  {
-    id: 3,
-    route: "/products?field=category&name=Accessories",
-    text: "Accessories",
-  },
-  {
-    id: 4,
-    route: "/products?field=category&name=Shoes",
-    text: "Shoes",
-  },
-  {
-    id: 5,
-    route: "/products?field=gender&name=All",
-    text: "All",
-  },
-];
+let links = ref([
+  {id: 0, route: {path: '/products', query: { field: 'gender', name: 'Womens'}}, text: 'Womens'},
+  {id: 1, route: {path: '/products', query: { field: 'gender', name: 'Mens'}}, text: 'Mens'},
+  {id: 2, route: {path: '/products', query: { field: 'category', name: 'Clothing'}}, text: 'Clothing'},
+  {id: 3, route: {path: '/products', query: { field: 'category', name: 'Accessories'}}, text: 'Accessories'},
+  {id: 4, route: {path: '/products', query: { field: 'category', name: 'Shoes'}}, text: 'Shoes'},
+  {id: 5, route: {path: '/products'}, text: 'All'}
+])
 </script>
